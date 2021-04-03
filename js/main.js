@@ -6,3 +6,7 @@ window.onload = () => {
                .register('./serviceworker.js');
     }
   }
+
+function displayName(e) {
+  document.getElementById('district-name').firstChild.data = e.id;
+}
