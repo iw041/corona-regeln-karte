@@ -24,8 +24,8 @@ html,
 
 /* SVG styles */
 #map-svg {
-  width: 500px;
-  height: 600px;
+  width: auto;
+  height: 80vh;  /* take 80 % of viewport for height (for dynamic SVG scaling based on screen size) */
 }
 
 .map-district-area:hover {
