@@ -22,6 +22,12 @@ html,
   font-size: 3rem;
 }
 
+/* SVG styles */
+#map-svg {
+  width: 500px;
+  height: 600px;
+}
+
 .map-district-area:hover {
   fill: #ec008c;
   opacity: 1;
