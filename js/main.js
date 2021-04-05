@@ -6,7 +6,7 @@ window.onload = () => {
                .register('./serviceworker.js');
     }
 
-    // ################ Pan and zoom for SVG map ################
+    /* ################ Pan and zoom for SVG map ################ */
     window.panZoomInstance = svgPanZoom('#map-svg', {
       panEnabled: true,
       zoomEnabled: true,
@@ -21,28 +21,37 @@ window.onload = () => {
     });
 }
 
+
+/* ################ Tooltips for showing disctrict names ################ */
 var tooltip = document.querySelector('.map-tooltip');
 
 // iterate throw all "path" and "polygon" tags of SVG
 [].forEach.call(document.querySelectorAll("path.map-district-area, polygon.map-district-area"), function(item) {
-  // attach mouseclick event 
+  // load and display Corona Regeln links in specific div
   item.addEventListener('click', function(){
-    // TODO: load and display Corona Regeln links in dedicated div
-    // alternative: open directly the disctrict's Corona Regeln URL (window.open('URL'))
+    // TODO: map ID to district's name and lookup disctrict's Corona Regeln URL
+    // alternative idea: open directly the disctrict's Corona Regeln URL (window.open('URL'))
   });
 
-  // attach mouseenter event
+  // display tooltip with district's name when mouse enters
   item.addEventListener('mouseenter', function() {
   	var sel = this,
     		pos = sel.getBoundingClientRect()
     
-    tooltip.innerHTML = sel.id
+    tooltip.innerHTML = sel.id  // TODO: set district's name (not polygon/path ID)
+
     tooltip.style.display = 'block';
     tooltip.style.top = pos.top + 'px';
     tooltip.style.left = pos.left + 'px';
   });
+
+  // attach tooltip to mouse movements (comment this part if a fixed position is required)
+  item.addEventListener('mousemove', function(e) {
+  	tooltip.style.top = e.clientY + 'px';
+    tooltip.style.left = e.clientX + 'px';
+  });
   
-  // when mouse leave hide the tooltip
+  // hide tooltip when mouse leaves
   item.addEventListener('mouseleave', function(){
   	tooltip.style.display = 'none';
   });

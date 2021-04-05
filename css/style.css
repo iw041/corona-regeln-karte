@@ -45,6 +45,31 @@ html,
   font-family: Comfortaa, Verdana;
   font-size: smaller;
   padding: 8px;
-  pointer-events:none;
+  pointer-events: none;
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+}
+
+.map-laender-text {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 213.333px;
+  line-height: 1.25;
+  font-family: sans-serif;
+  fill: #000000;
+  fill-opacity: 1;
+  stroke: none;
+  stroke-width: 10;
+  pointer-events:none;
+}
+
+.map-laender-text, tspan {
+  font-style: normal;
+  font-variant: normal;
+  font-weight: bold;
+  font-stretch: normal;
+  font-size: 213.333px;
+  font-family: sans-serif;
+  -inkscape-font-specification: "sans-serif Bold";
+  fill:#666666;
+  stroke-width: 10
 }
