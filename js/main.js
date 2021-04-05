@@ -24,3 +24,24 @@ window.onload = () => {
 function displayName(e) {
   document.getElementById('district-name').firstChild.data = e.id;
 }
+
+var tooltip = document.querySelector('.map-tooltip');
+
+// iterate throw all `path` tags
+[].forEach.call(document.querySelectorAll("path.map-district-area, polygon.map-district-area"), function(item) {  
+  // attach mouseenter event
+  item.addEventListener('mouseenter', function() {
+  	var sel = this,
+    		pos = sel.getBoundingClientRect()
+    
+    tooltip.innerHTML = sel.id
+    tooltip.style.display = 'block';
+    tooltip.style.top = pos.top + 'px';
+    tooltip.style.left = pos.left + 'px';
+  });
+  
+  // when mouse leave hide the tooltip
+  item.addEventListener('mouseleave', function(){
+  	tooltip.style.display = 'none';
+  });
+});
