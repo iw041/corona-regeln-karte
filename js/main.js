@@ -21,14 +21,16 @@ window.onload = () => {
     });
 }
 
-function displayName(e) {
-  document.getElementById('district-name').firstChild.data = e.id;
-}
-
 var tooltip = document.querySelector('.map-tooltip');
 
-// iterate throw all `path` tags
-[].forEach.call(document.querySelectorAll("path.map-district-area, polygon.map-district-area"), function(item) {  
+// iterate throw all "path" and "polygon" tags of SVG
+[].forEach.call(document.querySelectorAll("path.map-district-area, polygon.map-district-area"), function(item) {
+  // attach mouseclick event 
+  item.addEventListener('click', function(){
+    // TODO: load and display Corona Regeln links in dedicated div
+    // alternative: open directly the disctrict's Corona Regeln URL (window.open('URL'))
+  });
+
   // attach mouseenter event
   item.addEventListener('mouseenter', function() {
   	var sel = this,
