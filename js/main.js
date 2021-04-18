@@ -28,13 +28,15 @@ var tooltip = document.querySelector('.map-tooltip');
 // iterate throw all "path" and "polygon" tags of SVG
 [].forEach.call(document.querySelectorAll("path.map-district-area, polygon.map-district-area"), function(item) {
   // load and display Corona Regeln links in specific div
-  item.addEventListener('click', function(){
+  function handleDisctrictSelection(evt) {
     // TODO: map ID to district's name and lookup disctrict's Corona Regeln URL
     // alternative idea: open directly the disctrict's Corona Regeln URL (window.open('URL'))
-  });
-
-  // display tooltip with district's name when mouse enters
-  item.addEventListener('mouseenter', function() {
+  }
+  item.addEventListener('click', handleDisctrictSelection);
+  item.addEventListener('touchstart', handleDisctrictSelection);
+  
+  // display tooltip with district's name when mouse/touch enters
+  function handleDistrictHover(evt) {
   	var sel = this,
     		pos = sel.getBoundingClientRect()
     
@@ -43,16 +45,21 @@ var tooltip = document.querySelector('.map-tooltip');
     tooltip.style.display = 'block';
     tooltip.style.top = pos.top + 'px';
     tooltip.style.left = pos.left + 'px';
-  });
+  }
+  item.addEventListener('mouseenter', handleDistrictHover);
+  item.addEventListener('touchenter', handleDistrictHover);
 
   // attach tooltip to mouse movements (comment this part if a fixed position is required)
-  item.addEventListener('mousemove', function(e) {
+  function handleDistrictMovement(evt) {
   	tooltip.style.top = e.clientY + 'px';
     tooltip.style.left = e.clientX + 'px';
-  });
+  }
+  item.addEventListener('mousemove', handleDistrictMovement);
+  item.addEventListener('touchmove', handleDistrictMovement);
   
   // hide tooltip when mouse leaves
-  item.addEventListener('mouseleave', function(){
+  function handleDisctrictLeave(evt) {
   	tooltip.style.display = 'none';
-  });
+  }
+  item.addEventListener('mouseleave', handleDisctrictLeave);
 });
