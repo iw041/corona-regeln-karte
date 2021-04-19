@@ -51,8 +51,8 @@ var tooltip = document.querySelector('.map-tooltip');
 
   // attach tooltip to mouse movements (comment this part if a fixed position is required)
   function handleDistrictMovement(evt) {
-  	tooltip.style.top = e.clientY + 'px';
-    tooltip.style.left = e.clientX + 'px';
+  	tooltip.style.top = evt.clientY + 'px';
+    tooltip.style.left = evt.clientX + 'px';
   }
   item.addEventListener('mousemove', handleDistrictMovement);
   item.addEventListener('touchmove', handleDistrictMovement);
